@@ -47,7 +47,7 @@ This should post a tweet from your account. Unless all this works, you can't twe
 
 A compiled version of the Keynote Tweet app is included in this repo. If for some reason it does not run, you can easily build your own.
 
-1. Open the text version of the script, select all, and copy.
+1. Open the [text version of the script](https://github.com/cogdog/Keynote-Tweet/blob/master/keynote-tweet-script.txt), select all, and copy.
 2. In the **Utilities** folder of your Mac, launch the **Script Editor** and create a new one.
 3. Paste the text of the script in. It will look all purple.
 4. Click the **Compile** button at the top (looks like a hammer). The script text should now be colorized.
