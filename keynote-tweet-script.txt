@@ -1,0 +1,54 @@
+global extras
+global lastTweet
+property okflag : false
+
+set dialogResult to display dialog ¬
+	"Version 2.7 by @cogdog... Would you like to add any text (e.g. #hashtags or @usernames) to all of your tweets?" with title ¬
+	"Keynote Tweet" with icon note ¬
+	default answer ¬
+	"" buttons {"None", "Add This Text"} ¬
+	default button "Add This Text"
+
+if button returned of dialogResult is "None" then
+	set extras to ""
+else
+	set extras to text returned of dialogResult
+end if
+
+set lastTweet to ""
+
+display dialog ¬
+	"I will tweet anything between [twitter][/twitter] tags in your notes while you're presenting. Use the menu to quit this script when you're finished." with title ¬
+	"Keynote Tweet" with icon caution ¬
+	buttons {"Begin"} ¬
+	default button "Begin"
+
+on idle
+	tell application "System Events"
+		set okflag to (exists (some process whose name is "Keynote"))
+	end tell
+	if okflag then
+		tell application "Keynote"
+			if playing is true then
+				set slideNotes to get presenter notes of current slide of first document
+				if slideNotes is not equal to "" then
+					set leftCoord to offset of "[twitter]" in slideNotes
+					set rightCoord to offset of "[/twitter]" in slideNotes
+					if leftCoord is greater than 0 and rightCoord is greater than 0 then
+						set tweet to get characters (leftCoord + 9) thru (rightCoord - 1) of slideNotes as string
+						if tweet is not equal to "" then
+							if extras is not equal to "" then set tweet to tweet & " " & extras
+							if tweet is not equal to lastTweet then
+								set twitter_status to quoted form of ("status=" & tweet)
+								do shell script "twurl -d " & twitter_status & " /1.1/statuses/update.json"
+								set lastTweet to tweet
+							end if
+						end if
+					end if
+				end if
+			end if
+			return 1
+		end tell
+	end if
+end idle
+
