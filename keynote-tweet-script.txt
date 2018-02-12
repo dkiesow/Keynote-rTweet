@@ -3,7 +3,7 @@ global lastTweet
 property okflag : false
 
 set dialogResult to display dialog ¬
-	"Version 2.7 by @cogdog... Would you like to add any text (e.g. #hashtags or @usernames) to all of your tweets?" with title ¬
+	"Version 2.7.1 by @cogdog... Would you like to add any text (e.g. #hashtags or @usernames) to all of your tweets?" with title ¬
 	"Keynote Tweet" with icon note ¬
 	default answer ¬
 	"" buttons {"None", "Add This Text"} ¬
@@ -40,7 +40,7 @@ on idle
 							if extras is not equal to "" then set tweet to tweet & " " & extras
 							if tweet is not equal to lastTweet then
 								set twitter_status to quoted form of ("status=" & tweet)
-								do shell script "twurl -d " & twitter_status & " /1.1/statuses/update.json"
+								do shell script "/usr/bin/twurl -d " & twitter_status & " /1.1/statuses/update.json"
 								set lastTweet to tweet
 							end if
 						end if

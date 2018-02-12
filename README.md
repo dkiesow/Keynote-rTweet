@@ -1,5 +1,5 @@
 # Keynote Tweet
-by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
+v. 2.7.1 by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
 
 A MacOS X script (formerly known as AppleScript) for allowing presenters to automatically send tweets from specified slides in a Keynote slide deck.
 
@@ -52,7 +52,7 @@ A compiled version of the Keynote Tweet app is included in this repo. If for som
 3. Paste the text of the script in. It will look all purple.
 4. Click the **Compile** button at the top (looks like a hammer). The script text should now be colorized.
 5. Click the **Run** button just for fun to see if you get the dialog prompt.
-6. Save the app as any name you like; **Keynote Tweet 2.7** will let you know... that it is version 2.7
+6. Save the app as any name you like; **Keynote Tweet 2.7.1** will let you know... that it is version 2.7.1
 
 ## Using Keynote Tweet
 
@@ -63,9 +63,47 @@ Play your presentation, and click through slides. Watch your twitter stream.
 
 Your audiences will think you are endowed with great power and mystique. You are.
 
+## "sh doesn't find twurl" errors
+
+Awwww sh....
+
+Without getting too deep into unix terminology, the script needs to know the full file path to the twurl program (despite the fact you do not need it running from the command line). It's a `shell` thing. The script and compiled app included here uses what should be the most common path for where twurl is installed.
+
+      /usr/bin/twurl
+      
+It's possible it ended up somewhere else on your machine. You can find it's exact location by running from the command line:
+
+     which twurl
+     
+and it should respond with a full path. If is different from above, you will have to edit the script, and compile it in the Apple Script editor. 
+
+1. Open the [text version of the script](https://github.com/cogdog/Keynote-Tweet/blob/master/keynote-tweet-script.txt), select all, and copy.
+2. In the **Utilities** folder of your Mac, launch the **Script Editor** and create a new one.
+3. Paste the text of the script in. It will look all purple.
+4. Look for the line that reads:
+
+
+     do shell script "/usr/bin/twurl -d " & twitter_status & " /1.1/statuses/update.json"
+     
+5. Change the part that reads `/usr/bin/twurl`to whatever path the `which twurl` command returns.
+6. Click the **Compile** button at the top (looks like a hammer). The script text should now be colorized.
+7. Click the **Run** button just for fun to see if you get the dialog prompt.
+8. Save the app as any name you like; **Keynote Tweet 2.7.1** will let you know... that it is version 2.7.1
+
+Give it a try again.
+     
+
 ## Blog Notes
 
 See the long droll history of my tinkering with this http://cogdogblog.com/tag/keynote-tweet/
+
+## Recent history
+
+* v 2.7.1 Feb 4, 2018: Addressing the twurl no found by coding in the full expected path `/usr/bin/twurl` after reading [Apple Tech doc on path issues](https://developer.apple.com/library/content/technotes/tn2065/_index.html)
+
+* v 2.7 Feb 4, 2018: Updated to try script command (h/t to @amywebb on twitter) that might work on High Sierra (I am only able to try on Yosemite for now, it works) Blogged http://cogdogblog.com/2018/02/keynote-tweet-sierra/
+
+
 
 ### Requests/Complaints/Kudos
 
