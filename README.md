@@ -1,5 +1,10 @@
-# Keynote Tweet
-v. 2.7.1 by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
+# Keynote rTweet
+v 1.0 by Damon Kiesow @diesow
+Supports use of rtweet by @kearneymw and threaded tweets
+
+
+Based entirely on Keynote tweet v. 2.7.1 by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
+His notes and background on the project are below
 
 -----
 *If this kind of stuff has any value to you, please consider supporting me so I can do more!*
