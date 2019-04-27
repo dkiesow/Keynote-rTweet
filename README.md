@@ -8,6 +8,7 @@ https://medium.com/media-stack/keynote-rtweet-1099aecdff1
 
 The AppleScript is based entirely on Keynote tweet v. 2.7.1 by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
 His notes and background on the project are below
+
 --------
 
 A MacOS X script (formerly known as AppleScript) for allowing presenters to automatically send tweets from specified slides in a Keynote slide deck.
