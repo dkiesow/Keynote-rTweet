@@ -2,9 +2,15 @@ global extras
 global lastTweet
 property okflag : false
 
+-- Keynote rTweet 1.0 Damon Kiesow @dkiesow
+-- Entirely adapted for rtweet from Keynote-Tweet maintained by Alan Levin @cogdog
+-- https://github.com/cogdog/Keynote-Tweet
+-- This version requires rtweet from @kearneymw 
+-- https://rtweet.info/index.html
+
 set dialogResult to display dialog ¬
-	"Version 2.7.1 by @cogdog... Would you like to add any text (e.g. #hashtags or @usernames) to all of your tweets?" with title ¬
-	"Keynote Tweet" with icon note ¬
+	"Version 1.0 by @dkiesow... Would you like to add any text (e.g. #hashtags or @usernames) to all of your tweets?" with title ¬
+	"Keynote-rTweet" with icon note ¬
 	default answer ¬
 	"" buttons {"None", "Add This Text"} ¬
 	default button "Add This Text"
@@ -18,8 +24,8 @@ end if
 set lastTweet to ""
 
 display dialog ¬
-	"I will tweet anything between [twitter][/twitter] tags in your notes while you're presenting. Use the menu to quit this script when you're finished." with title ¬
-	"Keynote Tweet" with icon caution ¬
+	"The app will tweet everything between the [twitter][/twitter] tags in your presenter notes when you advance pages in Keynote. For your first tweet - put [first] after the closing [/twitter] Use the menu to quit this script when you're finished." with title ¬
+	"Keynote TweetR" with icon caution ¬
 	buttons {"Begin"} ¬
 	default button "Begin"
 
@@ -34,13 +40,25 @@ on idle
 				if slideNotes is not equal to "" then
 					set leftCoord to offset of "[twitter]" in slideNotes
 					set rightCoord to offset of "[/twitter]" in slideNotes
+					set first_check to offset of "[first]" in slideNotes
+					log first_check
+					if first_check is greater than 0 then
+						set firstTweet to "yes"
+						log firstTweet
+					else
+						set firstTweet to "no"
+						log firstTweet
+					end if
 					if leftCoord is greater than 0 and rightCoord is greater than 0 then
 						set tweet to get characters (leftCoord + 9) thru (rightCoord - 1) of slideNotes as string
 						if tweet is not equal to "" then
 							if extras is not equal to "" then set tweet to tweet & " " & extras
 							if tweet is not equal to lastTweet then
-								set twitter_status to quoted form of ("status=" & tweet)
-								do shell script "/usr/bin/twurl -d " & twitter_status & " /1.1/statuses/update.json"
+								set twitter_status to quoted form of (tweet)
+								-- Replace the below with the appropriate paths for your system (rscript path and then the path to your R script)
+								do shell script "/usr/local/bin/rscript /Users/kiesowd/keynote_tweet/keynote.R " & twitter_status & " " & firstTweet
+								log twitter_status
+								log firstTweet
 								set lastTweet to tweet
 							end if
 						end if
@@ -51,4 +69,3 @@ on idle
 		end tell
 	end if
 end idle
-
