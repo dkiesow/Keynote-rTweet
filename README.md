@@ -6,14 +6,13 @@ Basic deployment details are outlined here:
 https://medium.com/media-stack/keynote-rtweet-1099aecdff1
 
 
-The AppleScript is based entirely on Keynote tweet v. 2.7.1 by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
-His notes and background on the project are below
+The AppleScript included here is based entirely on Keynote tweet v. 2.7.1 by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
+
+His notes and background on the project are below. That implementation requires Twurl - this new fork is based on rtweet so the instructions are not applicable, but leaving them for provenance.
 
 --------
 
 A MacOS X script (formerly known as AppleScript) for allowing presenters to automatically send tweets from specified slides in a Keynote slide deck.
-
-![Tweet and Keynote](tweet-and-keynote.jpg "Tweet and Keynote")
 
 ## Back Story
 
@@ -112,14 +111,3 @@ See the long droll history of my tinkering with this http://cogdogblog.com/tag/k
 * v 2.7.1 Feb 4, 2018: Addressing the twurl no found by coding in the full expected path `/usr/bin/twurl` after reading [Apple Tech doc on path issues](https://developer.apple.com/library/content/technotes/tn2065/_index.html)
 
 * v 2.7 Feb 4, 2018: Updated to try script command (h/t to @amywebb on twitter) that might work on High Sierra (I am only able to try on Yosemite for now, it works) Blogged http://cogdogblog.com/2018/02/keynote-tweet-sierra/
-
-
-
-### Requests/Complaints/Kudos
-
-I have no issues with issues...
-
-* *You tell me* Fork and edit to suggest features or [toss them into the Issues bin](https://github.com/cogdog/Keynote-Tweet/issues)
-
-
-
