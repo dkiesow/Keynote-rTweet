@@ -2,9 +2,13 @@
 v 1.0 by Damon Kiesow @diesow
 Supports use of rtweet by @kearneymw and threaded tweets
 
------
-Based entirely on Keynote tweet v. 2.7.1 by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
+Basic deployment details are outlined here:
+https://medium.com/media-stack/keynote-rtweet-1099aecdff1
+
+
+The AppleScript is based entirely on Keynote tweet v. 2.7.1 by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
 His notes and background on the project are below
+--------
 
 A MacOS X script (formerly known as AppleScript) for allowing presenters to automatically send tweets from specified slides in a Keynote slide deck.
 
