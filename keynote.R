@@ -24,3 +24,4 @@ if (first_status == 'yes') {
  my_timeline <- get_timeline(user = me, 3) 
  reply_id <- my_timeline[1,2]
  post_tweet(status = keynote_status, in_reply_to_status_id = reply_id)
+}
