@@ -1,5 +1,5 @@
 #!/usr/bin/env Rscript
-##keynote.R v1.0 Damon Kiesow @dkiesow
+##keynote.R v1.1 Damon Kiesow @dkiesow
 ##Use with the Keynote rTweet AppleScript app to automate threaded tweeting during Keynote presentations
 ##
 ## load rtweet package
