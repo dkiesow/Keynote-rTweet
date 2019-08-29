@@ -18,6 +18,7 @@ if (length(args) < 2) {
 }
 keynote_status = iconv(keynote_status, "UTF-8", "cp1252"); 
 keynote_status = gsub("(\x93|\x94)", "\"", keynote_status, perl = T)
+keynote_status = gsub("(\x92)", "'", keynote_status, perl = T)
 ## Send a new tweet if first_status is "Yes" and reply tweet if "No"
 ## If you neglect to set the "[first]" flag in Keynote it will thread from your most recent tweet
 ## rtweet uses "get_timeline" to pull the last 3 tweets from your account
